@@ -1,0 +1,454 @@
+
+/* Font */
+@font-face {
+    font-family: "Inter";
+    src: url("fonts/InterVariable.woff2") format("woff2");
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+/* Colour variables */
+:root {
+    --page: #0b1629;
+    --panel: #172c4d;
+    --blue: #38bdf8;
+    --muted: #b4bfc5;
+    --red: #ff4d6d;
+    --empty: #496078;
+}
+
+/* Reset styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Page styling */
+body {
+    min-height: 100vh;
+    padding: 24px 14px;
+    background: var(--page);
+    color: white;
+    font-family: "Inter", sans-serif;
+
+    display: flex;
+    align-items: center;
+}
+
+/* Button defaults */
+button {
+    font: inherit;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}
+
+/* Main layout */
+.game-container {
+    width: min(620px, 100%);
+    margin: auto;
+}
+
+/* Game header */
+.game-header {
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.game-header h1 {
+    color: var(--blue);
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.game-header p {
+    display: none;
+}
+
+.screen > p {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.screen {
+    padding: 28px 22px;
+    border-radius: 18px;
+    background: var(--panel);
+    text-align: center;
+}
+
+.screen h2 {
+    font-size: 20px;
+}
+
+/* Menu buttons */
+.menu-buttons,
+.level-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 24px auto 0;
+}
+
+.menu-buttons {
+    max-width: 340px;
+    margin-top: 30px;
+    gap: 16px;
+}
+
+/* Button styles */
+.primary-button,
+.secondary-button,
+.level-button {
+    border: 1px solid var(--blue);
+    border-radius: 11px;
+    padding: 13px 18px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.primary-button { background: #1676a5; }
+.secondary-button { background: #285782; }
+
+.menu-buttons button {
+    width: 100%;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+.two-player-button {
+    background: #16794b;
+    border-color: #52d681;
+}
+
+.level-button {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    background: #1d4168;
+    text-align: left;
+}
+
+.level-button strong {
+    color: var(--blue);
+    font-size: 14px;
+}
+
+.level-button span { font-size: 12px; }
+
+.level-button small {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.text-button {
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.text-button:hover { text-decoration: underline; }
+
+#backToMenuButton { margin-top: 22px; }
+
+/* Level information */
+#levelTitle,
+#levelInfo {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#levelTitle {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+#levelInfo {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Game information */
+.game-topline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 12px;
+    margin-top: -18px;
+    text-align: center;
+}
+
+.game-topline > div {
+    text-align: center;
+    width: 100%;
+}
+
+.game-topline h2 {
+    font-size: 14px;
+    text-align: center;
+}
+
+.game-topline p {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 10px;
+    text-align: center;
+}
+
+/* Player panels */
+.player-information {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.player-information.two-player {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.info-panel {
+    display: flex;
+    min-width: 0;
+    height: 180px;
+    flex-direction: column;
+    align-items: center;
+    padding: 17px 7px;
+    border-radius: 18px;
+    background: var(--panel);
+}
+
+.info-panel h3 {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Player indicators */
+.player-circle {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-top: 17px;
+    border-radius: 50%;
+}
+
+.player-one { background: #4c8bf5; }
+.player-two { background: #52d681; }
+
+.player-score {
+    margin-top: 12px;
+    font-size: 10px;
+}
+
+/* Health display */
+.hearts {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 9px;
+}
+
+.heart {
+    display: inline-block;
+    width: 23px;
+    color: var(--empty);
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    line-height: 26px;
+    text-align: center;
+}
+
+.heart.full { color: var(--red); }
+
+.heart.half {
+    background: linear-gradient(to right, var(--red) 50%, var(--empty) 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.heart.empty { color: var(--empty); }
+
+/* Timer */
+.timer-panel { justify-content: flex-start; }
+
+.timer-display {
+    margin-top: 28px;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.player-two-panel { display: none; }
+
+.player-information.two-player .player-two-panel {
+    display: flex;
+}
+
+/* Game arena */
+.arena-container {
+    display: flex;
+    width: 100%;
+    min-height: 540px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 40px 12px;
+    border-radius: 24px;
+    background: var(--panel);
+}
+
+.arena-heading {
+    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.game-arena {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 7;
+    overflow: hidden;
+    border: 2.5px solid var(--blue);
+    border-radius: 24px;
+    background: radial-gradient(circle at center, #244568, #1b3654 75%);
+    box-shadow: 0 0 12px #38bdf859;
+}
+
+/* Player characters */
+.player-character {
+    position: absolute;
+    z-index: 5;
+    width: 32px;
+    height: 32px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: #4c8bf5;
+    box-shadow: 0 0 12px #4c8bf5b3;
+}
+
+.player-character.player-two {
+    background: #52d681;
+    box-shadow: 0 0 12px #52d681b3;
+}
+
+/* Game objects */
+.game-object {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+}
+
+.game-object img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Game controls */
+.control-instructions {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.control-instructions p {
+    font-size: 11px;
+}
+
+.control-instructions:has(#player2Controls:not(.hidden)) {
+    justify-content: space-between;
+}
+
+.pause-hint {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 10px;
+    text-align: center;
+}
+
+/* Game messages */
+.game-message {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: #050f1ee8;
+}
+
+.message-content {
+    width: min(380px, 100%);
+    padding: 28px 22px;
+    border: 2px solid var(--blue);
+    border-radius: 18px;
+    background: var(--panel);
+    text-align: center;
+}
+
+.message-content h2 {
+    color: var(--blue);
+    font-size: 21px;
+}
+
+.message-content p {
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Message buttons */
+.message-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.message-buttons button { min-width: 105px; }
+
+/* Mobile styling */
+@media (max-width: 480px) {
+    body { padding: 16px 9px; }
+    .game-header h1 { font-size: 21px; }
+    .arena-container { min-height: 0; padding: 17px 12px 12px; }
+    .game-arena { border-radius: 17px; }
+    .info-panel { height: 160px; }
+    .info-panel h3 { font-size: 10px; }
+    .timer-display { font-size: 26px; }
+    .player-information.two-player { gap: 6px; }
+    .heart { width: 19px; font-size: 21px; }
+}
+
+/* Pause menu */
+#pauseMenu .message-buttons {
+    flex-direction: column;
+    align-items: center;
+}
+
+#pauseMenu .message-buttons button {
+    width: 100%;
+    max-width: 260px;
+}

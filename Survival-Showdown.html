@@ -1,0 +1,138 @@
+
+<!-- HTML document -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Page settings and links -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival Showdown</title>
+    <link rel="stylesheet" href="Survival-Showdown.css">
+    <script src="Survival-Showdown.js" defer></script>
+</head>
+
+<!-- Main page content -->
+<body>
+<main class="game-container">
+
+    <!-- Game header -->
+    <header class="game-header">
+        <h1>SURVIVAL SHOWDOWN</h1>
+        <p id="headerSubtitle">Choose your game mode to begin.</p>
+    </header>
+
+    <!-- Main menu -->
+    <section class="screen" id="mainMenu">
+        <h2>MAIN MENU</h2>
+        <p>Choose how you want to play.</p>
+        <div class="menu-buttons">
+            <button class="primary-button" id="singleModeButton">SINGLE PLAYER</button>
+            <button class="secondary-button two-player-button" id="twoModeButton">TWO PLAYER</button>
+        </div>
+    </section>
+
+    <!-- Level selection -->
+    <section class="screen hidden" id="levelMenu">
+        <h2>SELECT A LEVEL</h2>
+        <p id="selectedModeText">Single-player mode</p>
+        <div class="level-buttons">
+            <button class="level-button" data-level="0">
+                <strong>LEVEL 1</strong>
+                <span>BEGINNER ARENA</span>
+                <small>60 seconds · Bombs</small>
+            </button>
+            <button class="level-button" data-level="1">
+                <strong>LEVEL 2</strong>
+                <span>INTERMEDIATE ARENA</span>
+                <small>45 seconds · Bombs and blades</small>
+            </button>
+            <button class="level-button" data-level="2">
+                <strong>LEVEL 3</strong>
+                <span>ADVANCED ARENA</span>
+                <small>30 seconds · All obstacles</small>
+            </button>
+        </div>
+        <button class="text-button" id="backToMenuButton">BACK TO MENU</button>
+    </section>
+
+    <!-- Game screen -->
+    <section class="hidden" id="gameScreen">
+        <div class="game-topline">
+            <div>
+                <h2 id="levelTitle">LEVEL 1</h2>
+                <p id="modeSubtitle">PLAYER 1</p>
+            </div>
+            <button class="text-button" id="quitButton">MENU</button>
+        </div>
+
+        <!-- Player information -->
+        <section class="player-information" id="playerInformation">
+            <div class="info-panel">
+                <h3>PLAYER 1</h3>
+                <div class="player-circle player-one"></div>
+                <p class="player-score" id="player1Score">Score: 0</p>
+                <div class="hearts" id="player1Hearts" aria-label="Player 1 health">
+                    <span class="heart full">♥</span>
+                    <span class="heart full">♥</span>
+                    <span class="heart full">♥</span>
+                </div>
+            </div>
+
+            <div class="info-panel timer-panel">
+                <h3>TIME LEFT</h3>
+                <div class="timer-display" id="timerDisplay">60S</div>
+            </div>
+
+            <div class="info-panel player-two-panel">
+                <h3>PLAYER 2</h3>
+                <div class="player-circle player-two"></div>
+                <p class="player-score" id="player2Score">Score: 0</p>
+                <div class="hearts" id="player2Hearts" aria-label="Player 2 health">
+                    <span class="heart full">♥</span>
+                    <span class="heart full">♥</span>
+                    <span class="heart full">♥</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game arena -->
+        <section class="arena-container">
+            <h2 class="arena-heading">MAIN ARENA</h2>
+            <div class="game-arena" id="gameArena" aria-label="Game playing area"></div>
+            <p class="game-instructions">Dodge obstacles · Collect coins · Survive!</p>
+        </section>
+
+        <!-- Player controls -->
+        <div class="control-instructions">
+            <p id="player1Controls">P1: WASD</p>
+            <p id="player2Controls" class="hidden">P2: Arrow keys</p>
+        </div>
+        <p class="pause-hint">Press ESC for quick settings</p>
+    </section>
+
+    <!-- Pause menu -->
+    <section class="game-message hidden" id="pauseMenu">
+        <div class="message-content">
+            <h2>GAME PAUSED</h2>
+            <p>Your game is paused. What would you like to do?</p>
+            <div class="message-buttons">
+                <button class="primary-button" id="resumeButton">RESUME</button>
+                <button class="secondary-button" id="retryButton">RETRY LEVEL</button>
+                <button class="secondary-button" id="homeButton">MAIN MENU</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game result message -->
+    <section class="game-message hidden" id="gameMessage" role="dialog" aria-modal="true">
+        <div class="message-content">
+            <h2 id="messageTitle">LEVEL COMPLETE!</h2>
+            <p id="messageText"></p>
+            <div class="message-buttons" id="messageButtons"></div>
+        </div>
+    </section>
+
+</main>
+</body>
+</html>
